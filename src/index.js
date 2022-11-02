@@ -1,8 +1,7 @@
-import _ from 'lodash';
-
 import './style.css';
 
 /* eslint-disable  no-unused-vars */
+import _ from 'lodash';
 import refresh from './pictures/refresh.png';
 import enter from './pictures/return.png';
 import dots from './pictures/dots.png';
