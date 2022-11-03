@@ -1,15 +1,10 @@
-import _ from 'lodash';
-
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+/* eslint-disable  no-unused-vars */
+import _ from 'lodash';
+import refresh from './pictures/refresh.png';
+import enter from './pictures/return.png';
+import dots from './pictures/dots.png';
+import Actions from '../modules/actions.js';
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  return element;
-}
-
-document.body.appendChild(component());
+document.addEventListener('DOMContentLoaded', Actions.addElem());
