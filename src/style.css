@@ -65,7 +65,7 @@ body {
   cursor: pointer;
 }
 
-.list li {
+.tasks li {
   display: flex;
   flex-direction: row;
   gap: 14px;
