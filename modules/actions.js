@@ -1,4 +1,4 @@
-// eslint-disable max-classes-per-file
+/* eslint-disable max-classes-per-file */
 let tasks = [];
 
 export default class Todo {
