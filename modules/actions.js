@@ -1,3 +1,4 @@
+// eslint-disable max-classes-per-file
 let tasks = [];
 
 export default class Todo {
@@ -59,10 +60,10 @@ export class Actions {
       const newTasks = tasks.filter((task) => task.index !== parseInt(event.target.id));
       tasks = newTasks;
       tasks.forEach((task, index) => {
-        task.index = index; 
+        task.index = index;
       });
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      Actions.showTask(); 
+      Actions.showTask();
     }
   }
 
