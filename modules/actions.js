@@ -1,7 +1,3 @@
-// eslint-disable-next-line  no-unused-vars
-
-import { add } from "lodash"
-
 let tasks = [];
 
 export default class Todo {
@@ -41,7 +37,7 @@ export class Actions {
   static showTask() {
     const list = document.querySelector('.list');
     tasks = JSON.parse(localStorage.getItem('tasks'));
-    list.innerHTML = ''; // empty list and create a new one
+    list.innerHTML = '';
     if (JSON.parse(localStorage.getItem('tasks')) !== null) {
       tasks.forEach((task) => {
         list.innerHTML += `
@@ -61,12 +57,12 @@ export class Actions {
       let tasks = JSON.parse(localStorage.getItem('tasks'));
       // eslint-disable-next-line  radix
       const newTasks = tasks.filter((task) => task.index !== parseInt(event.target.id));
-      tasks = newTasks; // using filter property to remove same index as the target
+      tasks = newTasks;
       tasks.forEach((task, index) => {
-        task.index = index; // set new index
+        task.index = index; 
       });
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      Actions.showTask(); // re-render the list
+      Actions.showTask(); 
     }
   }
 
@@ -74,7 +70,7 @@ export class Actions {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const ids = event.target.id;
     if (event.target.innerText) {
-      tasks[ids].description = event.target.innerText; // change old description for the new value
+      tasks[ids].description = event.target.innerText;
     }
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
