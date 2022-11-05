@@ -89,8 +89,7 @@ body {
 
 .completed {
   text-decoration: line-through;
-  color: rgba(0, 0, 0, 0.3);
-  accent-color: green;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .input-edit-text {

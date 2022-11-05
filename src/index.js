@@ -3,7 +3,7 @@ import enter from './icons/enter.svg';
 import refresh from './icons/refresh.svg';
 import ToDoList from './modules/List.js';
 import Task from './modules/Task.js';
-import actions from './modules/actions.js';
+import Actions from './modules/actions.js';
 
 const tasks = new ToDoList();
 const listDiv = document.querySelector('.container');
@@ -145,7 +145,7 @@ function addListener() {
     checkbox.addEventListener('change', (e) => {
       const { id } = e.target;
       const index = id.substring(id.indexOf('-') + 1, id.length);
-      const completed = new actions();
+      const completed = new Actions();
       completed.changeState(index);
       refreshList();
       addListener();
