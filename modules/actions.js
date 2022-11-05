@@ -1,52 +1,78 @@
-// eslint-disable-next-line  no-unused-vars
-const data = JSON.parse(localStorage.getItem('todo-list'));
-const list = document.querySelector('.list');
-const tasks = [
-  {
-    description: 'Finishing project',
-    completed: false,
-    index: 0,
-  }, {
-    description: 'Learning tasks',
-    completed: false,
-    index: 1,
-  }, {
-    description: 'Approving project',
-    completed: false,
-    index: 2,
-  },
-];
+/* eslint-disable max-classes-per-file */
+let tasks = [];
 
-export default class Actions {
-  static showTask(data) {
-    let li = '';
-    if (data) {
-      data.forEach((toDo, id) => {
-        li += `<li class='task'>
-      <input type='checkbox' id='${id}'>
-      <p>${toDo.description}</p>
-      <img class="dots" src="91b1f318fbc3ef6f0456.png" alt="3 dots" style="cursor:pointer"/>
-      </li>
-      `;
-      });
-    }
-    list.innerHTML = li;
+export default class Todo {
+  constructor(description, completed, index) {
+    this.description = description;
+    this.completed = completed;
+    this.index = index;
+  }
+}
+
+export class Actions {
+  static sincronizationStorage() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static addElem() {
-    tasks.forEach(() => {
-      let li = '';
-      if (tasks) {
-        tasks.forEach((toDo, id) => {
-          li += `<li class='task'>
-        <input type='checkbox' id='${id}'>
-        <p>${toDo.description}</p>
-        <img class="dots" src="91b1f318fbc3ef6f0456.png" alt="3 dots" style="cursor:pointer"/>
-        </li>
-        `;
-        });
-      }
-      list.innerHTML = li;
-    });
+  static addTask() {
+    if (localStorage.getItem('tasks') !== null) {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+      const input = document.querySelector('.list-create input').value;
+      const completed = false;
+      const index = tasks.length;
+      const task = new Todo(input, completed, index);
+      tasks.push(task);
+      document.querySelector('.list-create input').value = '';
+      Actions.sincronizationStorage();
+    } else {
+      tasks = [];
+      const input = document.querySelector('.list-create input').value;
+      const completed = false;
+      const index = 0;
+      const task = new Todo(input, completed, index);
+      tasks.push(task);
+      Actions.sincronizationStorage();
+    }
+  }
+
+  static showTask() {
+    const list = document.querySelector('.list');
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    list.innerHTML = '';
+    if (JSON.parse(localStorage.getItem('tasks')) !== null) {
+      tasks.forEach((task) => {
+        list.innerHTML += `
+    <div class="task">
+    <input id="${task.index}" type="checkbox" class="checkbox">
+    <span id="${task.index}" contentEditable="true" class="newTask">${task.description}</span>
+    <img id="${task.index}" class="dots" src="5fca2d25a81fb1fc8a79.svg"/>
+  </div>
+  `;
+      });
+    }
+  }
+
+  static removeTask(event) {
+    if (event.target.classList.contains('dots')) {
+      event.target.parentElement.remove();
+      let tasks = JSON.parse(localStorage.getItem('tasks'));
+      // eslint-disable-next-line  radix
+      const newTasks = tasks.filter((task) => task.index !== parseInt(event.target.id));
+      tasks = newTasks;
+      tasks.forEach((task, index) => {
+        task.index = index;
+      });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      Actions.showTask();
+    }
+  }
+
+  static editTask(event) {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const ids = event.target.id;
+    if (event.target.innerText) {
+      tasks[ids].description = event.target.innerText;
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 }

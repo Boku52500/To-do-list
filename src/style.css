@@ -20,13 +20,13 @@ body {
   width: 90%;
   margin-right: 5%;
   margin-left: 5%;
-  box-shadow: rgba(27, 27, 27, 0.2) 0 9px 26px;
+  box-shadow: rgba(44, 44, 44, 0.2) 0 8px 24px;
 }
 
 .today {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid rgb(207, 204, 204);
+  border-bottom: 2px solid rgb(236, 230, 230);
 }
 
 .today h1 {
@@ -36,18 +36,16 @@ body {
 }
 
 .today img {
-  width: 18px;
-  height: 18px;
-  margin-right: 2%;
+  width: 15px;
+  margin-right: 4%;
   cursor: pointer;
-  margin-top: 18px;
 }
 
 .list-create {
   padding: 7px 10px;
   display: flex;
   flex-direction: row;
-  border-bottom: 2px solid rgb(207, 204, 204);
+  border-bottom: 2px solid rgb(236, 230, 230);
 }
 
 .list-create input {
@@ -58,10 +56,9 @@ body {
 }
 
 .list-create img {
-  width: 20px;
-  height: 20px;
-  margin-top: 7px;
-  margin-left: 27px;
+  position: relative;
+  right: 0;
+  width: 15px;
   cursor: pointer;
 }
 
@@ -71,15 +68,53 @@ body {
   gap: 14px;
   align-items: center;
   padding: 14px;
-  border-bottom: 2px solid rgb(207, 204, 204);
+  border-bottom: 2px solid rgb(236, 230, 230);
 }
 
 .dots {
-  margin-right: 24px;
+  position: absolute;
+  right: 4%;
+  width: 16px;
+  cursor: pointer;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 2px solid rgb(236, 230, 230);
+  position: relative;
+}
+
+.newTask {
+  outline: none;
+  width: 90%;
+}
+
+.menu-list {
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.14);
+  border-radius: 2px;
+  z-index: 2;
+  bottom: -42px;
   position: absolute;
   right: 5%;
-  width: 15px;
-  height: 15px;
+  transform: scale(0);
+}
+
+.menu-list.active {
+  transform: scale(1);
+}
+
+.menu-list li {
+  height: 40px;
+}
+
+.menu-list li:hover {
+  background-color: rgb(243, 242, 236);
+  cursor: pointer;
 }
 
 .clear-button button {
