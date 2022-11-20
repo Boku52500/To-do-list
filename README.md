@@ -2,7 +2,7 @@
 
 # To-do list project.
 
-> This is the javaScript project for Microverse. In this project, I built a simple to-do list useing HTML, CSS, javaScript and WebPack.
+> This is a simple to-do list app where you can add/remove/edit tasks. I built it with HTML, CSS, javaScript and WebPack.
 
 ## Built With 
 
